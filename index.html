@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system" data-font="serif" data-sound="off">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>type away</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="veil veil-top" aria-hidden="true"></div>
+<div class="veil veil-bottom" aria-hidden="true"></div>
+
+<main class="paper" id="paper">
+  <div class="sheet">
+    <div class="greet" id="greet" aria-hidden="true">
+      <span class="greet-big">hello.</span>
+      <span class="greet-small">type away — the page keeps going</span>
+    </div>
+    <div id="editor" class="editor" contenteditable="true" spellcheck="false"
+         role="textbox" aria-multiline="true" aria-label="Writing area"></div>
+  </div>
+</main>
+
+<aside class="minimap" id="minimap" hidden aria-hidden="true">
+  <canvas id="map"></canvas>
+  <div class="map-frame" id="mapFrame"></div>
+</aside>
+
+<div class="dock" id="dock">
+
+  <div class="slot" data-group="theme">
+    <button class="icon" aria-label="Theme" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="7.3"/>
+        <path d="M12 4.7a7.3 7.3 0 0 1 0 14.6z" fill="currentColor" stroke="none"/>
+      </svg>
+    </button>
+    <div class="opts">
+      <button data-value="system">system</button>
+      <button data-value="light">light</button>
+      <button data-value="dark">dark</button>
+      <button data-value="sepia">sepia</button>
+    </div>
+  </div>
+
+  <div class="slot" data-group="font">
+    <button class="icon" aria-label="Font" aria-expanded="false">
+      <span class="glyph" aria-hidden="true">Aa</span>
+    </button>
+    <div class="opts">
+      <button data-value="serif">serif</button>
+      <button data-value="sans">sans</button>
+      <button data-value="mono">mono</button>
+      <button data-value="type">typewriter</button>
+    </div>
+  </div>
+
+  <div class="slot" data-group="sound">
+    <button class="icon" aria-label="Typing sound" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4.6 9.4h2.6l3.9-3.1v11.4l-3.9-3.1H4.6z"/>
+        <path class="waves" d="M14.6 9.3a4 4 0 0 1 0 5.4M17 7.1a7.4 7.4 0 0 1 0 9.8"/>
+        <path class="slash" d="M15.2 9.6l4.6 4.8M19.8 9.6l-4.6 4.8"/>
+      </svg>
+    </button>
+    <div class="opts">
+      <button data-value="off">off</button>
+      <button data-value="thock">thock</button>
+      <button data-value="cream">cream</button>
+      <button data-value="typewriter">typewriter</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
