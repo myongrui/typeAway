@@ -192,8 +192,11 @@ function audio() {
   return ac;
 }
 
-function fetchSample(path) {
-  return fetch(path)
+const AUDIO_DIR = "audio/";
+const AUDIO_BASE = new URL(AUDIO_DIR, document.baseURI).href;
+
+function fetchSample(name) {
+  return fetch(AUDIO_BASE + name)
     .then((r) => r.arrayBuffer())
     .then((buf) => ac.decodeAudioData(buf))
     .catch(() => null);
@@ -202,14 +205,14 @@ function fetchSample(path) {
 function loadSamples() {
   if (samplesAsked) return;
   samplesAsked = true;
-  fetchSample("audio/keypress.mp3").then((b) => { if (b) samples.keypress = b; });
-  fetchSample("audio/return.mp3").then((b) => { if (b) samples.return = b; });
+  fetchSample("keypress.mp3").then((b) => { if (b) samples.keypress = b; });
+  fetchSample("return.mp3").then((b) => { if (b) samples.return = b; });
   for (const kind of ["thock", "cream"]) {
     for (let i = 1; i <= 12; i++) {
-      fetchSample("audio/" + kind + "-" + i + ".wav").then((b) => { if (b) samples[kind].push(b); });
+      fetchSample(kind + "-" + i + ".wav").then((b) => { if (b) samples[kind].push(b); });
     }
     for (const k of ["space", "enter"]) {
-      fetchSample("audio/" + kind + "-" + k + ".wav").then((b) => { if (b) samples[kind + k] = b; });
+      fetchSample(kind + "-" + k + ".wav").then((b) => { if (b) samples[kind + k] = b; });
     }
   }
 }
